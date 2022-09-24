@@ -3,12 +3,16 @@ using UnityEngine.Events;
 
 public abstract class Unit : MonoBehaviour, IUnit
 {
-    public Team Teams => _team;
+    public Team TeamInfo
+    {
+        get => _teamInfo;
+        private set => _teamInfo = value;
+    }
     public float HP => _hp;
     public float Armor => _armor;
     public UnityEvent DieEvent => _dieEvent;
-
-    private Team _team;
+    [SerializeField]
+    private Team _teamInfo;
     private float _hp = 100;
     private float _armor = 0;
     private UnityEvent _dieEvent;
@@ -40,5 +44,9 @@ public abstract class Unit : MonoBehaviour, IUnit
         }
     }
 
+    public virtual void SetTeam(Team setvalue)
+    {
+        _teamInfo = setvalue;
+    }
     protected virtual void OnDie() { }
 }

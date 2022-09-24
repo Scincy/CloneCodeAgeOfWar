@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - userSpawner
+  - aiSpawner
   layers:
   - Default
   - TransparentFX
@@ -38,6 +40,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3226136181
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Castle
+    uniqueID: 403850007
+    locked: 0
+  - name: DeffenceTower
+    uniqueID: 1002031121
+    locked: 0
+  - name: Character
+    uniqueID: 2602425255
+    locked: 0
+  - name: Ground
+    uniqueID: 151761453
     locked: 0

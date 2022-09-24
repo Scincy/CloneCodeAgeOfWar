@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+public enum LookDirection { Left, Right }
 [RequireComponent(typeof(SpriteRenderer))]
-public class CharacterUnit : MonoBehaviour
+public class CharacterUnit : Unit
 {
     public string CharacterName { get => _characterName; }
     public float MoveSpeed { get => _moveSpeed; }
@@ -9,25 +10,13 @@ public class CharacterUnit : MonoBehaviour
     public float NormalAttackCooldown { get => _normalAttackCooldown; }
     public float NormalAttackCastingTime { get => _noramlAttackCastingTime; }
     public float SpawnWaitingTime { get => _spawnWaitingTime; }
-    public Team TeamInfo
-    {
-        get => _teamInfo;
-        set
-        {
-            if (value == Team.Blue && defaultLookDirection == false || value == Team.Red && defaultLookDirection == true) 
-            {
-                GetComponent<SpriteRenderer>().flipX = true;
-            }
-            _teamInfo = value;
-        }
-    }
+
 
     /// <summary>
-    /// true : look right sie
-    /// false : look left side
+    /// 기본 시선 방향
     /// </summary>
     [SerializeField]
-    public bool defaultLookDirection;
+    public LookDirection defaultLookDirection;
 
     protected Transform AttackTargetPos
     {
@@ -37,6 +26,7 @@ public class CharacterUnit : MonoBehaviour
             return AttackTarget.transform;
         }
     }
+    protected Unit AttackTarget;
 
     private string _characterName = "Unit";
     private float _moveSpeed = 1f;
@@ -45,19 +35,15 @@ public class CharacterUnit : MonoBehaviour
     private float _normalAttackCooldown = 1f;
     private float _noramlAttackCastingTime = 0.25f;
     private float _spawnWaitingTime = 1f;
-    private Team _teamInfo = Team.None;
-    
-    
 
 
-    protected Unit AttackTarget;
-
-    public void SetTeam(Team settingValue)
+    public override void SetTeam(Team settingValue)
     {
-        if (settingValue == Team.Blue && defaultLookDirection == false || settingValue == Team.Red && defaultLookDirection == true)
+        if (settingValue == Team.Blue && defaultLookDirection == LookDirection.Left
+            || settingValue == Team.Red && defaultLookDirection == LookDirection.Right)
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
-        _teamInfo = settingValue;
+        base.SetTeam(settingValue);
     }
 }

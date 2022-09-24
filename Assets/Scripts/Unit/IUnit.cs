@@ -2,7 +2,7 @@
 public enum Team { None, Red, Blue }
 public interface IUnit : IInitializable
 {
-    public Team Teams { get; }
+    public Team TeamInfo { get; }
     /// <summary>
     /// 체력
     /// </summary>
