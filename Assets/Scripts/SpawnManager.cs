@@ -30,26 +30,37 @@ public class SpawnManager : MonoBehaviour
     /// <summary>
     /// 스포너에 스폰 요청을 전달합니다.
     /// </summary>
-    /// <param name="request">ㅅ환할 캐릭터에 대한 요청 정보입니다.</param>
+    /// <param name="request">소환할 캐릭터에 대한 요청 정보입니다.</param>
     public void SendSpawnRequest(SpawnRequest request)
     {
         if (request.Equals(default(SpawnRequest))) Debug.LogWarning("spawn request가 초기화 되지 않은 것 같아요.");
         // 소환 된 캐릭터를 관리하기 위해 소환요청에 해당하는 팀의 리스트에 추가합니다.
         GetUnitList(request.TeamInfo).Add(userSpawner.Spawn(request));
     }
-
-    public List<CharacterUnit> GetUnitList(Team myTeamData)
+    /// <summary>
+    /// 팀 정보를 받아 해당 팀의 스폰리스트를 반환합니다.
+    /// </summary>
+    /// <param name="targetTeamData"></param>
+    /// <returns></returns>
+    /// <exception cref="System.NotSupportedException"></exception>
+    public List<CharacterUnit> GetUnitList(Team targetTeamData)
     {
-        switch (myTeamData)
+        switch (targetTeamData)
         {
             case Team.Red:
                 return AIUnits;
             case Team.Blue:
                 return PlayerUnits;
             default:
-                throw new System.NotSupportedException($"팀 정보 {myTeamData}에 대한 유닛리스트는 지원되지 않습니다.");
+                throw new System.NotSupportedException($"팀 정보 {targetTeamData}에 대한 유닛리스트는 지원되지 않습니다.");
         }
     }
+    /// <summary>
+    /// 팀 정보를 받아 해당 팀에 대치되는 적 팀의 스폰 리스트를 반환합니다.
+    /// </summary>
+    /// <param name="myTeamData"></param>
+    /// <returns></returns>
+    /// <exception cref="System.NotSupportedException"></exception>
     public List<CharacterUnit> GetEnemyUnitList(Team myTeamData)
     {
         switch (myTeamData)
