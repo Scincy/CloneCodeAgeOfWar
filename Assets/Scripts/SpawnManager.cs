@@ -35,7 +35,20 @@ public class SpawnManager : MonoBehaviour
     {
         if (request.Equals(default(SpawnRequest))) Debug.LogWarning("spawn request가 초기화 되지 않은 것 같아요.");
         // 소환 된 캐릭터를 관리하기 위해 소환요청에 해당하는 팀의 리스트에 추가합니다.
-        GetUnitList(request.TeamInfo).Add(userSpawner.Spawn(request));
+        GetUnitList(request.TeamInfo).Add(SelectSpawner().Spawn(request));
+
+        ICharacterSpawner SelectSpawner()
+        {
+            switch (request.TeamInfo)
+            {
+                case Team.Red:
+                    return aiSpawner;
+                case Team.Blue:
+                    return userSpawner;
+                default:
+                    throw new System.NotSupportedException($"팀 정보 {request.TeamInfo}에 대한 유닛리스트는 지원되지 않습니다.");
+            }
+        }
     }
     /// <summary>
     /// 팀 정보를 받아 해당 팀의 스폰리스트를 반환합니다.
