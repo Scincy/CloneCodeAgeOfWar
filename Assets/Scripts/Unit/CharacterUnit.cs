@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum LookDirection { Left, Right }
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class CharacterUnit : Unit
 {
     public string CharacterName { get => _characterName; }
