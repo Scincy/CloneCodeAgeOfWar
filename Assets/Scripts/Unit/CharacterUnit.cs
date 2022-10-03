@@ -23,10 +23,10 @@ public class CharacterUnit : Unit
     public LookDirection defaultLookDirection;
     public bool Targetable = true;
 
-    [SerializeField]protected Unit AttackTarget;
+    [SerializeField] protected Unit AttackTarget;
 
     private string _characterName = "Unit";
-    private float _moveSpeed = 0.01f;
+    private float _moveSpeed = 1f;
     private float _atk = 1f;
     private float _enemyDetectRadius = 1f;
     private float _normalAttackCooldown = 1f;
@@ -72,7 +72,7 @@ public class CharacterUnit : Unit
             float distance = Vector2.Distance(transform.position, AttackTarget.transform.position);
             //공격 가능 범위밖에 대상이 있다면 이동합니다.
             if (distance > _attackableDistance)
-                RigidbodyComponent.MovePosition(Vector2.MoveTowards(transform.position, AttackTarget.transform.position, MoveSpeed));
+                RigidbodyComponent.MovePosition(Vector2.MoveTowards(transform.position, AttackTarget.transform.position, MoveSpeed * Time.fixedDeltaTime));
             // TODO : else StartAttack()//공격 가능 거리 안에 적이 있음으로 공격 단계를 수행합니다.
 
             yield return new WaitForFixedUpdate();
