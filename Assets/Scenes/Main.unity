@@ -2211,9 +2211,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1664826198}
   - component: {fileID: 1664826197}
+  - component: {fileID: 1664826199}
   m_Layer: 0
   m_Name: CastleLeft
-  m_TagString: Untagged
+  m_TagString: playerCastle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2263,6 +2264,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664826199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664826196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad355668de427944b335b3cd6d642a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _teamInfo: 2
 --- !u!1 &1738281184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,6 +2288,7 @@ GameObject:
   - component: {fileID: 1738281186}
   - component: {fileID: 1738281185}
   - component: {fileID: 1738281187}
+  - component: {fileID: 1738281188}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -2320,6 +2335,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164c05a0167f55c41bc025ab6a44e8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1738281188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738281184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e347cc626d93234992d1094d2f4864c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1774366325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,9 +2357,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1774366327}
   - component: {fileID: 1774366326}
+  - component: {fileID: 1774366328}
   m_Layer: 0
   m_Name: CastleRight
-  m_TagString: Untagged
+  m_TagString: aiCastle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2382,6 +2410,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1774366328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774366325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad355668de427944b335b3cd6d642a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _teamInfo: 1
 --- !u!1 &1876953837
 GameObject:
   m_ObjectHideFlags: 0
